@@ -2,9 +2,9 @@ FROM ubuntu:latest
 
 WORKDIR /opt/event/authenticator
 
-COPY ./controller/config  .
+COPY ./cmd/config  .
 
-COPY ./controller/.env .
+COPY ./cmd/.env .
 
 RUN apt update
 

@@ -69,10 +69,11 @@ type AuthHandler struct {
 const verifyKey = "Si3wpzWhAaoP9FKQUIMuguAUKm7eYDtfDoBpQJD5iWRxzD5pV8AL866oUUua01EF"
 
 func (h *AuthHandler) VerifyToken(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	token, ok := ultilities.GetQuery(r, "headers")
-	if !ok {
-		WriteJSON(w, http.StatusConflict, ResponseBody{
-			Message: "cannot get token",
+	token := r.Header.Get("x-api-key")
+
+	if len(token) == 0 {
+		WriteJSON(w, http.StatusBadRequest, ResponseBody{
+			Message: "don't have token",
 		})
 		return
 	}

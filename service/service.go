@@ -24,10 +24,11 @@ func (handle *ServiceHandler) VerifyTokenUser(tokenStr string, verifyKey string)
 	if token == nil {
 		return model.User{}, err
 	}
-	if len(claims["Email"].(string)) == 0 {
-		return model.User{}, errors.New("undefined Email")
-	}
-	email := claims["Email"]
+	// fmt.Println(claims["sub"])
+	// if len(claims["sub"].(string)) == 0 {
+	// 	return model.User{}, errors.New("undefined Email")
+	// }
+	email := claims["sub"]
 	User, err := handle.UserRepository.FindByEmail(email.(string))
 	if err != nil {
 		return model.User{}, errors.New("cannot find User by email")
