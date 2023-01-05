@@ -22,7 +22,7 @@ type AddAccount struct {
 	UserID      bson.ObjectId `bson:"userID" json:"userID"`
 	CreatedAt   time.Time     `bson:"createdAt" json:"createdAt"`
 	UpdatedAt   time.Time     `bson:"updatedAt" json:"updatedAt"`
-	CreatedBy   string        `bson:"createdBy"json:"createdBy"`
+	CreatedBy   string        `bson:"createdBy" json:"createdBy"`
 }
 
 func (c *AddAccount) ValidAccount() error {

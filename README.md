@@ -73,9 +73,10 @@ func init() {
 
 - `/auth/user/update/:id` update a user
 
-\*DELETE 
+\*DELETE
 
 -`/auth/user/deletebyid/:id` delete a user by id
+
 - `/auth/user/deletebyphone/:phonenumber` delete a user by phone number
 
 ###LOGIN WITH FACEBOOK
@@ -111,9 +112,17 @@ func init() {
 
 \*Facebook Auth
 
-1. From https://developers.facebook.com select "My Apps" / "Add a new App"
-2. Set "Display Name" and "Contact email"
-3. Choose "Facebook Login" and then "Web"
-4. Set "Site URL" to your domain, ex: https://example.mysite.com
-5. Under "Facebook login" / "Settings" fill "Valid OAuth redirect URIs" with your callback url constructed as domain + /auth/facebook/callback
-6. Select "App Review" and turn public flag on. This step may ask you to provide a link to your privacy policy.
+1. Access to URL : https://developers.facebook.com/
+2. Create Account
+3. Create App with Website domain, your app have ClientID(App ID) and CLient Secret(Secret)
+4. In Setting/Basic : Fill Privacy Policy URL <i style="color: red"> Not Set as Localhost... </i> and then Turn ON the Development Mode
+
+5. Documentation: https://www.npmjs.com/package/react-facebook
+6. Using Login-Button to create button on interface : <i>Input your app ID</i>
+7. The http in interface must be secure : HTTPS - Because Enforce HTTPS in your Facebook App is ON
+8. Run app and click the button
+9. in tab console will return accessToken in object
+
+10. On Service
+
+- GET : https://graph.facebook.com/me?fields=" + your permission + "&access_token=" + accessToken. Web will return object include all fields which you request
